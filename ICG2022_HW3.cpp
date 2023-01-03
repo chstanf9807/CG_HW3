@@ -365,11 +365,11 @@ void CreateShaderLib()
     fillColorShader = new FillColorShaderProg();
     if (!fillColorShader->LoadFromFiles("F:/ComputerGraphics/HW/HW3/HW3_now/ICG2022_HW3/shaders/fixed_color.vs", "F:/ComputerGraphics/HW/HW3/HW3_now/ICG2022_HW3/shaders/fixed_color.fs"))
         exit(1);
-
+    
     phongShadingShader = new PhongShadingDemoShaderProg();
     if (!phongShadingShader->LoadFromFiles("F:/ComputerGraphics/HW/HW3/HW3_now/ICG2022_HW3/shaders/phong_shading_demo.vs", "F:/ComputerGraphics/HW/HW3/HW3_now/ICG2022_HW3/shaders/phong_shading_demo.fs"))
         exit(1);
-
+    
     skyboxShader = new SkyboxShaderProg();
     if (!skyboxShader->LoadFromFiles("F:/ComputerGraphics/HW/HW3/HW3_now/ICG2022_HW3/shaders/skybox.vs", "F:/ComputerGraphics/HW/HW3/HW3_now/ICG2022_HW3/shaders/skybox.fs"))
         exit(1);
@@ -452,14 +452,14 @@ string openfilename_png() {
 void start_load_file()
 {
     cout << "////////////////////////////////////////////////////////" << endl;
-    cout << "Press [O] to load the obj file or Press [Esc] to leave." << endl;
+    cout << "Press [O] to load the OBJ FILE or Press [Esc] to leave." << endl;
     cout << "input[O/Esc]: ";
     int ch;
     while (1) {
         if (_kbhit()) {
             ch = _getch();
             if (ch == 'o') {
-                cout << char(ch) << "\nPleace choose what you want." << endl;
+                cout << char(ch) << "\nPleace choose what you want OBJ FILE." << endl;
                 break;
             }
             else if (ch == 27)
@@ -475,6 +475,7 @@ void start_load_file()
 
 int main(int argc, char** argv)
 {
+    start_load_file();
     // Setting window properties.
     glutInit(&argc, argv);
     glutSetOption(GLUT_MULTISAMPLE, 4);

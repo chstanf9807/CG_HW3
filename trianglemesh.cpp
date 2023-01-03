@@ -124,18 +124,10 @@ void TriangleMesh::get_material_data(map<string, int> mtl_table, vector <string>
 		glm::vec3 kd = subMeshes[i].material->GetKd();
 		glm::vec3 ks = subMeshes[i].material->GetKs();
 
-		//cout << subMeshes[i].material->GetName() << ":\n";
-		//cout << "Ns = " << ns << endl;
-		//cout << "Ka = " << ka[0] << " " << ka[1] << " " << ka[2] << endl;
-		//cout << "Kd = " << kd[0] << " " << kd[1] << " " << kd[2] << endl;
-		//cout << "Ks = " << ks[0] << " " << ks[1] << " " << ks[2] << endl;
-
 		map <string, string>::iterator it;
 		it = img_names.find(subMeshes[i].material->GetName());
 		if (it != img_names.end()) {
 			string img_n = img_names[subMeshes[i].material->GetName()];
-			//cout << "id = " << i << " value = " << img_n << endl;
-			//cout << subMeshes[i].material->GetName() << endl;
 			imgT = new ImageTexture(img_n);
 			subMeshes[i].material->SetMapKd(imgT);
 		}
@@ -172,7 +164,6 @@ void TriangleMesh::get_face_data(map<int, map<int, map<int, int> > >& v_table, v
 						j++;
 						subMeshes[mtl_group_indx[j]].vertexIndices.push_back(v_table[p][t][n]);
 					}
-					//vertexIndices.push_back(v_table[p][t][n]);
 				}
 				else
 				{
@@ -188,7 +179,6 @@ void TriangleMesh::get_face_data(map<int, map<int, map<int, int> > >& v_table, v
 						j++;
 						subMeshes[mtl_group_indx[j]].vertexIndices.push_back(indx);
 					}
-					//vertexIndices.push_back(indx);
 					indx++;
 				}
 			}
@@ -208,7 +198,6 @@ void TriangleMesh::get_face_data(map<int, map<int, map<int, int> > >& v_table, v
 					j++;
 					subMeshes[mtl_group_indx[j]].vertexIndices.push_back(indx);
 				}
-				//vertexIndices.push_back(indx);
 				indx++;
 			}
 		}
@@ -230,7 +219,6 @@ void TriangleMesh::get_face_data(map<int, map<int, map<int, int> > >& v_table, v
 				j++;
 				subMeshes[mtl_group_indx[j]].vertexIndices.push_back(indx);
 			}
-			//vertexIndices.push_back(indx);
 			indx++;
 		}
 	}
@@ -293,7 +281,6 @@ bool TriangleMesh::LoadFromFile(const std::string& filePath, const bool normaliz
 			s >> y_v;
 			s >> z_v;
 			glm::vec3 p = glm::vec3(x_v, y_v, z_v);
-			//cout << "p = (" << p[0] << ", " << p[1] << ", " << p[2] << ")\n";
 			v.push_back(p);
 			if (firstPosion)
 			{
@@ -466,7 +453,6 @@ bool TriangleMesh::LoadFromFile(const std::string& filePath, const bool normaliz
 		else if (str == "map_Kd")
 		{
 			s >> str;
-			//img_filePath = filePath.substr(0, filePath.find_last_of("/\\") + 1) + str;
 			img_names.insert(pair <string, string>(_mtl_names.back(), str));
 		}
 	}
@@ -533,6 +519,6 @@ void TriangleMesh::ShowInfo()
 	std::cout << "Model Center: " << objCenter.x << ", " << objCenter.y << ", " << objCenter.z << std::endl;
 	std::cout << "Model Extent: " << objExtent.x << " x " << objExtent.y << " x " << objExtent.z << std::endl;
 	cout << "--------------------------------------------------------" << endl;
-	cout << "Pleace choise you want skybox image." << endl;
+	cout << "Pleace choise you want SkyBox image." << endl;
 }
 
